@@ -20,7 +20,7 @@ services:
     restart: always
   worker:
     build: .
-    entrypoint: celery -A workers worker -l debug
+    entrypoint: celery -A beringlab worker -l debug
     depends_on:
       - broker
       - database
