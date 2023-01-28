@@ -1,0 +1,31 @@
+version: '3'
+services:
+  database:
+    image: postgres:15-alpine
+    container_name: beringlab_database
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: BAH7vxq@zxm8fwr4bcm
+      POSTGRES_DB: beringlab
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - beringlab_db_volume:/var/lib/postgresql/data/pgdata
+  broker:
+    image: redis:7-alpine
+    container_name: beringlab_broker
+    restart: always
+  worker:
+    build: .
+    entrypoint: celery -A workers worker -l debug
+    depends_on:
+      - broker
+    container_name: beringlab_worker
+    restart: always
+  api:
+    build: .
+    container_name: beringlab_api
+    restart: always
+    ports:
+      - 8888:8888
+volumes:
+  beringlab_db_volume:
