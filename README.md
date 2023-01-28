@@ -9,6 +9,10 @@
 ```shell
 docker compose up --build
 ```
+* django project는 http://localhost:8888 를 통해 접근 가능.
+* database는 host=localhost, port=5432, database=beringlab으로 접근 가능. 계정 정보는 .env 파일에서 확인 가능. 
+
+
 ### 실행에 문제가 발생한 경우
 #### `docker: 'compose' is not a docker command`
 이전 버전의 docker compose를 사용해서 발생한 문제. 아래 명령어로 실행
