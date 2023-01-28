@@ -16,7 +16,10 @@ docker compose up --build
 docker-compose up --build
 ```
 
-#### `SCRAM authentication requires libpq version 10 or above`
+#### ~~`SCRAM authentication requires libpq version 10 or above`~~
+
+> `psycopg2-binary` 대신 `psycopg2` 패키지를 사용해서 해결되었음.
+
 M1과 같은 Apple silicon을 포함한 ARM processor에서는 잘못된 버전의 libpq에 대해 빌드하는 버그로 인해서
 psycopg2-binary package가 실행되지 않으므로 아래 환경변수를 설정하고 rosetta를 통해 실행해야함
 ```shell
