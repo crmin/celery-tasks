@@ -137,4 +137,8 @@ STATIC_ROOT = BASE_DIR / 'statics'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CELERY_BROKER_URL = 'redis://beringlab_broker'
+# CELERY_BROKER_URL = 'redis://beringlab_broker'
+username = os.getenv('RABBITMQ_DEFAULT_USER')
+password = os.getenv('RABBITMQ_DEFAULT_PASS')
+vhost = os.getenv('RABBITMQ_DEFAULT_VHOST')
+CELERY_BROKER_URL = f'amqp://{username}:{password}@beringlab_broker:5672/{vhost}'
