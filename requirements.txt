@@ -12,6 +12,7 @@ django-celery-results==2.4.0
 h11==0.14.0
 kombu==5.2.4
 prompt-toolkit==3.0.36
+psycopg2-binary==2.9.5
 pytz==2022.7.1
 redis==4.4.2
 six==1.16.0
