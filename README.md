@@ -10,6 +10,10 @@
 docker compose up --build
 ```
 * django project는 http://localhost:8888 를 통해 접근 가능.
+  * django admin을 통해서도 데이터를 확인 가능.
+    * https://localhost:8888/admin
+    * username=admin
+    * password=admin
 * database는 host=localhost, port=5432, database=beringlab으로 접근 가능. 계정 정보는 .env 파일에서 확인 가능. 
 
 
