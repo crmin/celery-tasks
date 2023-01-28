@@ -16,3 +16,8 @@
 - `.env`가 `.gitignore`에 처리되지 않고 github에 올라가는 이유
   - 환경변수값에 psql 정보가 담겨있는데, 해당 프로젝트가 제품을 위한 프로젝트가 아니고 테스트를 위함이므로 보안적인 문제는 없다고 생각됨.
   - .env 파일로 환경 변수를 관리함으로 여러 container에서 같은 값을 쉽게 참조할 수 있고, 추후 값의 변경도 쉬움.
+- `Work.note` 필드가 `null=True`가 아닌 `blank=True`인 이유
+  - null value는 aggregate할 때 예상하지 못한 결과를 가져오기도 함.
+  - int와 같은 type에서는 "blank"를 의미하는 값은 null 밖에 없음. (0 != null).
+    하지만 str에서는 ""와 null 모두 "blank"를 의미할 수 있으므로 개발자에게 혼돈을 줄 수 있음.
+  - 따라서 str이 저장되는 필드 (CharField, TextField)는 null=False, blank=True로 설정해야함
