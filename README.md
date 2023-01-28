@@ -1,7 +1,28 @@
-# Beringlab 과제
+# Celery Tasks
 
 ## 목표
 동기적으로 동작하는 view의 루틴을 비동기적으로 동작하도록 수정
+
+## 실행
+프로젝트는 dockerize 되었고, brocker, database 등과 함께 동작하므로 docker compose를 이용해서 실행함
+
+```shell
+docker compose up --build
+```
+### 실행에 문제가 발생한 경우
+#### `docker: 'compose' is not a docker command`
+이전 버전의 docker compose를 사용해서 발생한 문제. 아래 명령어로 실행
+```shell
+docker-compose up --build
+```
+
+#### `SCRAM authentication requires libpq version 10 or above`
+M1과 같은 Apple silicon을 포함한 ARM processor에서는 잘못된 버전의 libpq에 대해 빌드하는 버그로 인해서
+psycopg2-binary package가 실행되지 않으므로 아래 환경변수를 설정하고 rosetta를 통해 실행해야함
+```shell
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+```
+
 
 ## 환경
 - postgresql 15
